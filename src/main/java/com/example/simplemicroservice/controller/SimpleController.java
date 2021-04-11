@@ -33,8 +33,8 @@ public class SimpleController {
     return ResponseEntity.ok(temporalIds);
   }
 
-  @PostMapping
-  public ResponseEntity<ReturnData> createId(String id) {
+  @PostMapping("/{id}")
+  public ResponseEntity<ReturnData> createId(@PathVariable String id) {
     if (!id.isEmpty() || !id.isBlank()) {
       var record = new ReturnData(id, UUID.randomUUID().toString());
       temporalIds.add(record);
